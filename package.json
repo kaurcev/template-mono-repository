@@ -1,5 +1,5 @@
 {
-  "name": "messager",
+  "name": "messenger",
   "version": "1.0.0",
   "workspaces": [
     "msgr-backend",
