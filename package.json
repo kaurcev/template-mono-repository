@@ -1,22 +1,22 @@
 {
-  "name": "messenger",
+  "name": "template-monorepository",
   "version": "1.0.0",
   "workspaces": [
-    "msgr-backend",
-    "msgr-frontend"
+    "backend",
+    "frontend"
   ],
   "scripts": {
     "start": "concurrently -n \"FRONTEND,BACKEND\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run start:front\" \"npm run start:back\"",
-    "start:front": "cd msgr-frontend && npm start",
-    "start:back": "cd msgr-backend && npm start",
+    "start:front": "cd frontend && npm start",
+    "start:back": "cd backend && npm start",
     "build": "npm run build:front && npm run move:front && npm run create-build",
-    "build:front": "cd msgr-frontend && npm run build",
-    "move:front": "rimraf msgr-backend/public && cpx \"msgr-frontend/build/**/*\" msgr-backend/public",
-    "create-build": "rimraf build && mkdirp build && cpx \"msgr-backend/**/*.{js,json,html,css,jsx,ts,tsx}\" build && cpx \"msgr-backend/public\" build -r",
+    "build:front": "cd frontend && npm run build",
+    "move:front": "rimraf backend/public && cpx \"frontend/build/**/*\" backend/public",
+    "create-build": "rimraf build && mkdirp build && cpx \"backend/**/*.{js,json,html,css,jsx,ts,tsx}\" build && cpx \"backend/public\" build -r",
     "test": "concurrently \"npm run test:front\" \"npm run test:back\"",
-    "test:front": "cd msgr-frontend && npm test",
-    "test:back": "cd msgr-backend && npm test",
-    "clean": "rimraf msgr-frontend/build msgr-backend/public build"
+    "test:front": "cd frontend && npm test",
+    "test:back": "cd backend && npm test",
+    "clean": "rimraf frontend/build backend/public build"
   },
   "author": "Alexsandr Kaurcev",
   "devDependencies": {
