@@ -7,7 +7,10 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaurcev/messenger.git"
+  },
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0"
