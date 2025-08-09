@@ -1,4 +1,9 @@
 # Шаблон монорепозитория
+![Static Badge](https://img.shields.io/badge/kaurcev.dev-kaurcev-kaurcev)
+![GitHub top language](https://img.shields.io/github/languages/top/kaurcev/template-mono-repository)
+![GitHub](https://img.shields.io/github/license/kaurcev/template-mono-repository)
+![GitHub Repo stars](https://img.shields.io/github/stars/kaurcev/template-mono-repository)
+![GitHub issues](https://img.shields.io/github/issues/kaurcev/template-mono-repository)
 
 Шаблон для управления бэкендом (Node.js) и фронтендом (React) в одном репозитории с поддержкой:
 
