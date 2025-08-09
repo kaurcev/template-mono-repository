@@ -6,17 +6,17 @@
     "frontend"
   ],
   "scripts": {
-    "start": "concurrently -n \"FRONTEND,BACKEND\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run start:front\" \"npm run start:back\"",
+    "start": "concurrently -n \"FRONTEND,BACKEND\" \"npm run start:front\" \"npm run start:back\"",
     "start:front": "cd frontend && npm start",
-    "start:back": "cd backend && npm start",
-    "build": "npm run build:front && npm run move:front && npm run create-build",
+    "start:back": "cd backend && npm run dev",
+    "build": "npm run clean && npm run build:front && npm run move:front && npm run create-build",
     "build:front": "cd frontend && npm run build",
     "move:front": "rimraf backend/public && cpx \"frontend/build/**/*\" backend/public",
-    "create-build": "rimraf build && mkdirp build && cpx \"backend/**/*.{js,json,html,css,jsx,ts,tsx}\" build && cpx \"backend/public\" build -r",
-    "test": "concurrently \"npm run test:front\" \"npm run test:back\"",
-    "test:front": "cd frontend && npm test",
-    "test:back": "cd backend && npm test",
-    "clean": "rimraf frontend/build backend/public build"
+    "create-build": "rimraf build && mkdirp build && cpx \"backend/**/*.{js,json,html,css,jsx,ts,tsx}\" build && cpx \"backend/public/**/*\" build/public",
+    "clean": "rimraf build frontend/build backend/public",
+    "public": "npm run build && node -e \"const os = require('os'); const command = os.platform() === 'win32' ? 'npm run public:win' : 'npm run public:mac'; require('child_process').execSync(command, {stdio: 'inherit'});\"",
+    "public:mac": "concurrently -k -n \"SERVER,TUNNEL\" -c \"bgBlue.bold,bgMagenta.bold\" \"cd build && node server.js\" \"sleep 2 && lt --port 6769\"",
+    "public:win": "concurrently -k -n \"SERVER,TUNNEL\" -c \"bgBlue.bold,bgMagenta.bold\" \"cd build && node server.js\" \"timeout 2 >nul && lt --port 6769\""
   },
   "author": "Alexsandr Kaurcev",
   "repository": {
@@ -26,7 +26,12 @@
   "devDependencies": {
     "concurrently": "^9.2.0",
     "cpx": "^1.5.0",
+    "mkdirp": "^3.0.1",
     "rimraf": "^5.0.0",
-    "mkdirp": "^3.0.1"
+    "wait-on": "^8.0.4"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "localtunnel": "^2.0.2"
   }
 }
