@@ -1,0 +1,22 @@
+{
+  "name": "messager",
+  "version": "1.0.0",
+  "workspaces": [
+    "msgr-backend",
+    "msgr-frontend"
+  ],
+  "scripts": {
+    "start": "concurrently -n \"FRONTEND,BACKEND\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run start:front\" \"npm run start:back\"",
+    "start:front": "cd msgr-frontend && npm start",
+    "start:back": "cd msgr-backend && npm start",
+    "build": "npm run build:front && npm run build:back",
+    "build:front": "cd msgr-frontend && npm run build",
+    "build:back": "cd msgr-backend && npm run build",
+    "test": "concurrently \"npm run test:front\" \"npm run test:back\"",
+    "test:front": "cd msgr-frontend && npm test",
+    "test:back": "cd msgr-backend && npm test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
