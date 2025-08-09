@@ -1,5 +1,5 @@
 {
-  "name": "template-monorepository",
+  "name": "template-mono-repository",
   "version": "1.0.0",
   "workspaces": [
     "backend",
@@ -19,6 +19,10 @@
     "clean": "rimraf frontend/build backend/public build"
   },
   "author": "Alexsandr Kaurcev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaurcev/template-mono-repository.git"
+  },
   "devDependencies": {
     "concurrently": "^9.2.0",
     "cpx": "^1.5.0",

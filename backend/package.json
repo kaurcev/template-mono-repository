@@ -8,10 +8,6 @@
     "build": "echo \"Backend build complete\" && exit 0"
   },
   "keywords": [],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kaurcev/messenger.git"
-  },
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0"
