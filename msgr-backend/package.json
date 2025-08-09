@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo \"Backend build complete\" && exit 0"
   },
   "keywords": [],
   "repository": {

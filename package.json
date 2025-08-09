@@ -9,15 +9,20 @@
     "start": "concurrently -n \"FRONTEND,BACKEND\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run start:front\" \"npm run start:back\"",
     "start:front": "cd msgr-frontend && npm start",
     "start:back": "cd msgr-backend && npm start",
-    "build": "npm run build:front && npm run build:back",
+    "build": "npm run build:front && npm run move:front && npm run create-build",
     "build:front": "cd msgr-frontend && npm run build",
-    "build:back": "cd msgr-backend && npm run build",
+    "move:front": "rimraf msgr-backend/public && cpx \"msgr-frontend/build/**/*\" msgr-backend/public",
+    "create-build": "rimraf build && mkdirp build && cpx \"msgr-backend/**/*.{js,json,html,css,jsx,ts,tsx}\" build && cpx \"msgr-backend/public\" build -r",
     "test": "concurrently \"npm run test:front\" \"npm run test:back\"",
     "test:front": "cd msgr-frontend && npm test",
-    "test:back": "cd msgr-backend && npm test"
+    "test:back": "cd msgr-backend && npm test",
+    "clean": "rimraf msgr-frontend/build msgr-backend/public build"
   },
   "author": "Alexsandr Kaurcev",
   "devDependencies": {
-    "concurrently": "^9.2.0"
+    "concurrently": "^9.2.0",
+    "cpx": "^1.5.0",
+    "rimraf": "^5.0.0",
+    "mkdirp": "^3.0.1"
   }
 }
